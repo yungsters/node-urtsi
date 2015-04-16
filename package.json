@@ -1,0 +1,7 @@
+{
+  "name": "urtsi",
+  "version": "1.0.0",
+  "description": "Interface for the Somfy Universal RTS Interface (URTSI).",
+  "license": "MIT",
+  "author": "Timothy Yung <yungsters@gmail.com>"
+}
