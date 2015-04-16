@@ -6,5 +6,10 @@
   "author": "Timothy Yung <yungsters@gmail.com>",
   "dependencies": {
     "serialport": "^1.6.1"
+  },
+  "devDependencies": {
+    "babel": "^5.1.10",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0"
   }
 }

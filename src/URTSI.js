@@ -1,5 +1,6 @@
 var SerialPort = require('serialport').SerialPort;
 
-function URTSI() {}
+class URTSI {
+}
 
 module.exports = URTSI;
