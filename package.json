@@ -13,6 +13,7 @@
     "url": "https://github.com/yungsters/urtsi"
   },
   "dependencies": {
+    "promise": "^7.0.0",
     "serialport": "^1.6.1"
   },
   "devDependencies": {
