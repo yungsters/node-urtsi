@@ -10,9 +10,13 @@ class URTSI {
     this._address = address;
     this._path = serialPath;
     this._serialPort = null;
+    this._channels = [];
+    for (var ii = 1; ii <= 16; ii++) {
+      channels.push(new URTSIChannel(this, ii));
+    }
   }
-  getChannel(channel) {
-    return new URTSIChannel(this, channel);
+  getChannels() {
+    return this._channels;
   }
   execute(channel, direction) {
     this._serialPort = this._serialPort || new Promise((resolve, reject) => {
