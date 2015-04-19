@@ -1,8 +1,8 @@
 var Promise = require('promise');
 var SerialPort = require('serialport').SerialPort;
 
-var invariant = require('invariant');
-var stringPad = require('stringPad');
+var invariant = require('./invariant');
+var stringPad = require('./stringPad');
 
 class URTSI {
   constructor(serialPath, address = 1) {
@@ -12,7 +12,7 @@ class URTSI {
     this._serialPort = null;
     this._channels = [];
     for (var ii = 1; ii <= 16; ii++) {
-      channels.push(new URTSIChannel(this, ii));
+      this._channels.push(new URTSIChannel(this, ii));
     }
   }
   getChannels() {
@@ -29,11 +29,11 @@ class URTSI {
       serialPort.on('open', () => resolve(serialPort));
       serialPort.on('error', reject);
     });
-    return this._getSerialPort().then(
+    return this._serialPort.then(
       serialPort => new Promise((resolve, reject) => {
         var command =
-          stringPad(this._address, 2) +
-          stringPad(channel, 2) +
+          stringPad('' + this._address, 2) +
+          stringPad('' + channel, 2) +
           direction;
 
         serialPort.write(command, error => {
@@ -55,13 +55,13 @@ class URTSIChannel {
     this._channel = channel;
   }
   up() {
-    this._urtsi.execute(this._channel, 'U');
+    return this._urtsi.execute(this._channel, 'U');
   }
   down() {
-    this._urtsi.execute(this._channel, 'D');
+    return this._urtsi.execute(this._channel, 'D');
   }
   stop() {
-    this._urtsi.execute(this._channel, 'S');
+    return this._urtsi.execute(this._channel, 'S');
   }
 }
 
