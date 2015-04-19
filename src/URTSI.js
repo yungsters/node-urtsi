@@ -5,9 +5,8 @@ var invariant = require('./invariant');
 var stringPad = require('./stringPad');
 
 class URTSI {
-  constructor(serialPath, address = 1) {
-    invariant(address > 0 && address < 100, 'Invalid address: ' + address);
-
+  constructor(serialPath) {
+    var address = 1; // Address for RS-232 is always 01.
     var execute = (channel, direction) => getSerialPort(serialPath).then(
       serialPort => new Promise((resolve, reject) => {
         serialPort.write(
