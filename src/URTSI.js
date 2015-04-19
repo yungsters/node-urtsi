@@ -16,14 +16,27 @@ class URTSI {
       })
     );
 
-    this._channels = [];
-    for (var ii = 1; ii <= 16; ii++) {
-      this._channels.push({
-        down: execute.bind(null, ii, 'D'),
-        stop: execute.bind(null, ii, 'S'),
-        up:   execute.bind(null, ii, 'U'),
-      });
-    }
+    // URTSI II cannot handle subsequent `stop` commands within ~600ms.
+    var prevStop = Promise.resolve();
+
+    this._channels = Array(...Array(16)).map((_, ii) => {
+      var channel = ii + 1;
+      return {
+        up() {
+          return execute(channel, 'U');
+        },
+        down() {
+          return execute(channel, 'D');
+        },
+        stop() {
+          var result = prevStop.then(() => execute(channel, 'S'));
+          prevStop = result.then(() => new Promise(resolve => {
+            setTimeout(resolve, 600);
+          }));
+          return result;
+        }
+      };
+    });
   }
 
   getChannels() {
