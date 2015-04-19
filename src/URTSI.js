@@ -30,7 +30,7 @@ class URTSI {
         },
         stop() {
           var result = prevStop.then(() => execute(channel, 'S'));
-          prevStop = result.then(() => new Promise(resolve => {
+          prevStop = prevStop.then(() => new Promise(resolve => {
             setTimeout(resolve, 600);
           }));
           return result;
