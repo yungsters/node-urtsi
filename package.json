@@ -1,6 +1,6 @@
 {
   "name": "urtsi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Interface for the Somfy Universal RTS Interface (URTSI).",
   "license": "MIT",
   "homepage": "https://github.com/yungsters/urtsi",

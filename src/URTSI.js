@@ -18,7 +18,7 @@ class URTSI {
     );
 
     // URTSI II cannot handle subsequent `stop` commands within ~600ms.
-    const prevStop = Promise.resolve();
+    let prevStop = Promise.resolve();
 
     this._channels = Array(16).fill(null).map((_, ii) => {
       const channelID = ii + 1;
