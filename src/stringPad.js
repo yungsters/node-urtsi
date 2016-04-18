@@ -1,4 +1,9 @@
-function stringPad(string, size, padding = '0') {
+'use strict';
+
+function stringPad(string, size, padding) {
+  if (arguments.length < 3) {
+    padding = '0';
+  }
   if (string.length >= size) {
     return string;
   }

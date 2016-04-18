@@ -18,28 +18,28 @@ The `URTSI` class a few methods that return one or a group of the 16 channels.
 Each channel or group of channels has the `up()`, `down()`, and `stop()` methods.
 
 ```js
-var urtsi = new URTSI('/dev/ttyUSB0');
+const urtsi = new URTSI('/dev/ttyUSB0');
 
 // Open shades on the first channel.
-var channel = urtsi.getChannel(1);
+const channel = urtsi.getChannel(1);
 channel.up();
 
 // Get an array of all 16 channels.
-var channels = urtsi.getChannels();
+const channels = urtsi.getChannels();
 
 // Close shades on the even channels.
-var evenChannels = urtsi.getChannels(2, 4, 6, 8, 10, 12, 14, 16);
+const evenChannels = urtsi.getChannels([2, 4, 6, 8, 10, 12, 14, 16]);
 evenChannels.map(channel => channel.down());
 
 // Stop (or go to favorite position for) a group of channels.
-var channelGroup = urtsi.getChannelGroup(1, 2, 3);
+const channelGroup = urtsi.getChannelGroup([1, 2, 3]);
 channelGroup.stop();
 ```
 
 Each command returns a promise:
 
 ```js
-urtsi.getChannelGroup().stop().done(() => {
+urtsi.getChannelGroup().stop().then(() => {
   console.log('All shades are going to their favorite positions!');
 });
 ```

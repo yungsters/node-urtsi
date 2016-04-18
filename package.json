@@ -1,6 +1,6 @@
 {
   "name": "urtsi",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Interface for the Somfy Universal RTS Interface (URTSI).",
   "license": "MIT",
   "homepage": "https://github.com/yungsters/urtsi",
@@ -9,23 +9,15 @@
   },
   "author": "Timothy Yung <yungsters@gmail.com>",
   "files": [
-    "dist/"
+    "src/"
   ],
-  "main": "dist/URTSI.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yungsters/urtsi"
+  "main": "src/URTSI.js",
+  "repository": "yungsters/node-urtsi",
+  "engines": {
+    "node": ">=4.2.0",
+    "homebridge": ">=0.2.0"
   },
   "dependencies": {
-    "promise": "^7.0.0",
-    "serialport": "^1.6.1"
-  },
-  "devDependencies": {
-    "babel": "^5.1.10",
-    "gulp": "^3.8.11",
-    "gulp-babel": "^5.1.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serialport": "^2.1.0"
   }
 }
