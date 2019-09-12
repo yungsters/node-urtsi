@@ -1,6 +1,6 @@
 {
   "name": "urtsi",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Interface for the Somfy Universal RTS Interface (URTSI).",
   "license": "MIT",
   "homepage": "https://github.com/yungsters/urtsi",
@@ -18,6 +18,6 @@
     "homebridge": ">=0.2.0"
   },
   "dependencies": {
-    "serialport": "^2.1.0"
+    "serialport": "^6.2.2"
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const SerialPort = require('serialport').SerialPort;
+const SerialPort = require('serialport');
 
 const invariant = require('./invariant');
 const stringPad = require('./stringPad');
